@@ -10,7 +10,7 @@
 ---------			to generating and playing notes here.			---------
 ---------															---------
 ---------			The two accessible (external) methods 			---------
----------			should be the InitDAC(), for setting up 		---------
+---------			should be the DAC_Init(), for setting up 		---------
 ---------			DAC at the start, and PlayNote() which			---------
 ---------			will take a string and a octave into			---------
 ---------			the function. i.e.								---------
@@ -28,48 +28,190 @@
 
 #include <string.h>
 
-void InitDAC();
-void PlayNote();
-int  Getfrequency();
-void SetDAC();
 
 
+/*    Definitions    */
+#define  	WAVE_RESOLUTION    256   	// Our 256bit sine wave resolution
+#define    	MAX_VOLUME        16    	// 16 different volumes
+#define 	SINE_OFFSET     128 		// DC offset for sin wave
 
 
+/*    Global Variables        */
+unsigned  int    data    theta = 0;		
 
-void InitDAC()
+
+/* Variable for moving through the 8-bit sine wave */
+unsigned char    data     volume = 	7; 	/* Volume 0-15. 0=> mute, 15=> max */
+unsigned char    data    octave = 	4; 	/* Set inital octave to 4 */
+
+/* Tones and their frequencies 		C		C#		D		Eb		E		F		F#		G		G#		A		Bb		B	*/
+unsigned short	 code	tone[]	=	{262,	277,	294,	311,	330,	349,	370,	392,	415,	440,	466,	494};
+
+const char    code    sin[] = { 
+                                    /* DAC voltages for 8-bit, 16 volume sine wave */
+                                    /* ------------------------------------------------------------------------ */
+                                    
+                                   1,2 // #include "sine_8_bits.csv"    /* 256 piece sine wave */
+                                };
+								
+volatile unsigned short Dtheta;		//Our Dtheta variable does...
+
+void set_Tone(unsigned short);
+unsigned short octave_Adjust(unsigned char, unsigned short);
+void DAC_Init();
+void Timer_Init();
+void Voltage_Reference_Init();
+void DAC_Sine_Wave();
+void Set_Volume(unsigned char);
+
+/*		Voltage_Reference_Init	*/
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         Voltage_Reference_Init
+
+        Description:      Initialise voltage references (Needed for DAC)
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+void Voltage_Reference_Init()
+{
+    SFRPAGE   = ADC0_PAGE;
+    REF0CN    = 0x02;
+}
+
+
+/*		Oscillator_Init			*/
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         Oscillator_Init
+
+        Description:      Initialise the system Clock at a faster rate  (Needed for DAC)
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+void Oscillator_Init()
+{
+    SFRPAGE   = CONFIG_PAGE;
+    OSCICN    = 0x82;
+}
+
+
+/*		Timer_Init				*/
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         Timer_Init
+
+        Description:      Initialise timer ports and registers
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+void Timer_Init()
+{
+    SFRPAGE   = TMR2_PAGE;
+    TMR2CN    = 0x04;
+    TMR2CF    = 0x0A;
+    RCAP2L    = 0x45;
+    RCAP2H    = 0xFF;
+}
+
+
+/*		DAC_Init				*/
+ /*--------------------------------------------------------------------------------------------------------------------
+        Function:         DAC_Init
+
+        Description:      Initialise DAC0. 
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+void DAC_Init()
 {
 	//We want this function to set up our DAC for general use. We will use the SetDAC() method for specifically readying the DAC for playing notes
-}
-void SetDAC()
-{
-	//We want to grab the frequency needed using Getfrequency(), get the phase from our lookup table, and sit ready to play the note
-}
-void PlayNote()
-{
-	//This method should actually play the given note. It will act as the method to pass in "G#", which will be parsed to Getfrequency("G#"), which
-	//will grab "G#"'s corresponding phase value from a lookup table and set the DAC with it using SetDAC("G#");, or maybe we'll pass it the frequency. 
-	// Dunno!
+	SFRPAGE   = DAC0_PAGE;
+    DAC0CN    = 0x84; 
 }
 
-int  Getfrequency()
+
+/*		Interrupts_Init			*/
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         Interrupts_Init
+
+        Description:      Initialise interrupts
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+void Interrupts_Init()
 {
-	//Pretty straight forward. Just grab a value from a lookup table corresponding to the frequency of the wave wanted. i.e. 
-	// Grab 415.3 Hz when you request "G#".
-	
-// 		C		C#		D		Eb		E		F		F#		G		G#		A		Bb		B
-// 0	16.35	17.32	18.35	19.45	20.60	21.83	23.12	24.50	25.96	27.50	29.14	30.87
-// 1	32.70	34.65	36.71	38.89	41.20	43.65	46.25	49.00	51.91	55.00	58.27	61.74
-// 2	65.41	69.30	73.42	77.78	82.41	87.31	92.50	98.00	103.8	110.0	116.5	123.5
-// 3	130.8	138.6	146.8	155.6	164.8	174.6	185.0	196.0	207.7	220.0	233.1	246.9
-// 4	261.6	277.2	293.7	311.1	329.6	349.2	370.0	392.0	415.3	440.0	466.2	493.9
-// 5	523.3	554.4	587.3	622.3	659.3	698.5	740.0	784.0	830.6	880.0	932.3	987.8
-// 6	1047	1109	1175	1245	1319	1397	1480	1568	1661	1760	1865	1976
-// 7	2093	2217	2349	2489	2637	2794	2960	3136	3322	3520	3729	3951
-// 8	4186	4435	4699	4978	5274	5588	5920	6272	6645	7040	7459	7902
-	
-	return -1;
+    IE        = 0xA0;  // Global enable interrupt + timer 2 interrupt
 }
+
+
+/*		Timer2_ISR				*/
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         Timer2_ISR
+
+        Description:      
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+void Timer2_ISR (void) interrupt 5
+{
+      DAC_Sine_Wave();
+    
+    TF2 = 0;        // Reset Interrupt
+
+}
+
+
+/*		DAC_Sine_Wave			*/
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         DAC_Sine_Wave
+
+        Description:      Produces a simple sine wave based on the volume, theta, and Dtheta values.
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+/* Run through sine wave */
+void DAC_Sine_Wave(void){
+    unsigned char i = (unsigned char)((theta&0xFF00)>>8);
+    DAC0H = SINE_OFFSET + volume*(sin[i])/MAX_VOLUME;        /*    Update the voltage in the DAC    */
+    theta = theta + Dtheta;    /* Due to sine wave being 8 bit, the char overflow will bring state back to 0 */
+}
+
+
+/*		Set_Volume				*/
+	
+
+/*--------------------------------------------------------------------------------------------------------------------
+        Function:         Set_Volume
+
+        Description:      Sets the volume of the wave
+
+        Revisions:
+
+--------------------------------------------------------------------------------------------------------------------*/
+	void Set_Volume(unsigned char i){
+    if(i>MAX_VOLUME){    /* Adjust volume if it's value is too large */
+        i = MAX_VOLUME;
+    }
+    volume = i;
+}
+
+
+unsigned short octave_Adjust(unsigned char OCT, unsigned short tone_fr)
+{
+
+    return(440);
+}
+
+void set_Tone(unsigned short i)
+{
+    Dtheta = i;
+}
+
 
 
 

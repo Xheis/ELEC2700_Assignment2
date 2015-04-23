@@ -23,6 +23,9 @@ ________________________________________________________________________________
 #include "Notes.h"
 #include "Keyboard.h"
 
+void main(void);
+void General_Init(void);
+
 /*--------------------------------------------------------------------------------------------------------------------
         Function:         Main
 
@@ -33,6 +36,7 @@ ________________________________________________________________________________
 --------------------------------------------------------------------------------------------------------------------*/
 void main(void)
 {
+	//printf("Hello World");
 	General_Init();
 	Timer_Init();
   Voltage_Reference_Init();
@@ -73,89 +77,6 @@ void General_Init()
 	WDTCN = 0xad;
   SFRPAGE = CONFIG_PAGE;
 	P2MDOUT = 0xff;		// Need to make pushpull outputs to drive LEDs properly
-
 	XBR2 = 0x40;
 }
-
-/*--------------------------------------------------------------------------------------------------------------------
-        Function:         Timer_Init
-
-        Description:      Initialise timer ports and registers
-
-        Revisions:
-
---------------------------------------------------------------------------------------------------------------------*/
-void Timer_Init()
-{
-	SFRPAGE   = TMR2_PAGE;
-
-	// Configuration goes here.............
-
-}
-
-/*--------------------------------------------------------------------------------------------------------------------
-        Function:         Voltage_Reference_Init
-
-        Description:      Initialise voltage references (Needed for DAC)
-
-        Revisions:
-
---------------------------------------------------------------------------------------------------------------------*/
-void Voltage_Reference_Init()
-{
-	SFRPAGE   = ADC0_PAGE;
-  REF0CN    = 0x03; // Turn on internal bandgap reference and output buffer to get 2.4V reference (pg 107)
-}
-
-/*--------------------------------------------------------------------------------------------------------------------
-        Function:         DAC_Init
-
-        Description:      Initialise DAC0. 
-
-        Revisions:
-
---------------------------------------------------------------------------------------------------------------------*/
-void DAC_Init()
-{
-  SFRPAGE   = DAC0_PAGE;
-
-		// Configuration goes here...........
-}
-
-/*--------------------------------------------------------------------------------------------------------------------
-        Function:         Interrupts_Init
-
-        Description:      Initialise interrupts
-
-        Revisions:
-
---------------------------------------------------------------------------------------------------------------------*/
-void Interrupts_Init()
-{
-	IE        = 0xA0;  // Global enable interrupt + timer 2 interrupt
-}
-
-/*--------------------------------------------------------------------------------------------------------------------
-        Function:         Timer2_ISR
-
-        Description:      
-
-        Revisions:
-
---------------------------------------------------------------------------------------------------------------------*/
-void Timer2_ISR (void) interrupt 5
-{
-  unsigned char SFRPAGE_SAVE = SFRPAGE;        // Save Current SFR page
-
-  SFRPAGE   = DAC0_PAGE;
-
-	// Work to do here.......
-	
-	TF2 = 0;        // Reset Interrupt
-  SFRPAGE = SFRPAGE_SAVE; 							      // Restore SFR page
-}
-
-
-
-
 

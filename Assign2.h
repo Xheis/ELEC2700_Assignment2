@@ -42,12 +42,12 @@ sbit LD8 = P2 ^ 7;                         // LED LD8
 //--------------------------------------------------------------------------------------------------------------------
 //                              Function prototypes
 //--------------------------------------------------------------------------------------------------------------------
-void main(void);
+/*void main(void);
 void General_Init(void);
 void Timer_Init(void);
 void Voltage_Reference_Init(void);
 void DAC_Init(void);
-void Interrupts_Init(void);
+void Interrupts_Init(void);*/
 
 #endif    
 

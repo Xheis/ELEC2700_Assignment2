@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.30.0                                                          04/22/2015  14:21:26  PAGE 1
+LX51 LINKER/LOCATER V4.66.30.0                                                          04/23/2015  14:52:47  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.30.0, INVOKED BY:
@@ -14,15 +14,20 @@ INPUT MODULES INCLUDED:
          COMMENT TYPE 0: C51 V9.53.0.0
   C:\PROGRAMMING\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
          COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\PROGRAMMING\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\PROGRAMMING\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
 
 
 ACTIVE MEMORY CLASSES OF MODULE:  Assign2 (ASSIGN2)
 
 BASE        START       END         USED      MEMORY CLASS
 ==========================================================
-C:000000H   C:000000H   C:00FFFFH   00009AH   CODE
+C:000000H   C:000000H   C:00FFFFH   0001B3H   CODE
+I:000000H   I:000000H   I:00007FH   000011H   DATA
+C:000000H   C:000000H   C:00FFFFH   00001AH   CONST
 I:000000H   I:000000H   I:0000FFH   000001H   IDATA
-I:000000H   I:000000H   I:00007FH   000008H   DATA
 
 
 MEMORY MAP OF MODULE:  Assign2 (ASSIGN2)
@@ -33,28 +38,36 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 
 * * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
 000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
-000008H   000008H   000001H   BYTE   UNIT     IDATA          ?STACK
+000008H   00000DH   000006H   BYTE   UNIT     DATA           ?DT?ASSIGN2
+00000EH   000010H   000003H   BYTE   UNIT     DATA           ?DT?_OCTAVE_ADJUST?ASSIGN2
+000011H   000011H   000001H   BYTE   UNIT     IDATA          ?STACK
 
 * * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
 000000H   000002H   000003H   ---    OFFS..   CODE           ?CO??C_STARTUP?0
 000003H   00002AH   000028H   ---    ---      **GAP**
 00002BH   00002DH   000003H   BYTE   OFFS..   CODE           ?ASSIGN2?0002B
 00002EH   0007FFH   0007D2H   ---    ---      **GAP**
-000800H   000843H   000044H   BYTE   UNIT     CODE           ?PR?MAIN?ASSIGN2
-000844H   000858H   000015H   BYTE   UNIT     CODE           ?PR?TIMER2_ISR?ASSIGN2
-000859H   000868H   000010H   BYTE   UNIT     CODE           ?PR?GENERAL_INIT?ASSIGN2
-000869H   000874H   00000CH   BYTE   UNIT     CODE           ?C_C51STARTUP
-000875H   00087BH   000007H   BYTE   UNIT     CODE           ?PR?VOLTAGE_REFERENCE_INIT?ASSIGN2
-00087CH   000880H   000005H   BYTE   UNIT     CODE           ?PR?GETFREQUENCY?ASSIGN2
-000881H   000884H   000004H   BYTE   UNIT     CODE           ?PR?TIMER_INIT?ASSIGN2
-000885H   000888H   000004H   BYTE   UNIT     CODE           ?PR?DAC_INIT?ASSIGN2
-000889H   00088CH   000004H   BYTE   UNIT     CODE           ?PR?INTERRUPTS_INIT?ASSIGN2
-00088DH   00088FH   000003H   BYTE   UNIT     CODE           ?PR?CHECKINPUT?ASSIGN2
-000890H   000890H   000001H   BYTE   UNIT     CODE           ?PR?INITDAC?ASSIGN2
-000891H   000891H   000001H   BYTE   UNIT     CODE           ?PR?SETDAC?ASSIGN2
-000892H   000892H   000001H   BYTE   UNIT     CODE           ?PR?PLAYNOTE?ASSIGN2
-000893H   000893H   000001H   BYTE   UNIT     CODE           ?PR?UPDATEDISPALY?ASSIGN2
+000800H   00088BH   00008CH   BYTE   UNIT     CODE           ?C_C51STARTUP
+00088CH   0008CFH   000044H   BYTE   UNIT     CODE           ?PR?MAIN?ASSIGN2
+0008D0H   00090CH   00003DH   BYTE   UNIT     CODE           ?PR?TIMER2_ISR?ASSIGN2
+00090DH   00093AH   00002EH   BYTE   UNIT     CODE           ?PR?DAC_SINE_WAVE?ASSIGN2
+00093BH   00094CH   000012H   BYTE   UNIT     CODE           ?C?LIB_CODE
+00094DH   00095CH   000010H   BYTE   UNIT     CODE           ?PR?TIMER_INIT?ASSIGN2
+00095DH   00096CH   000010H   BYTE   UNIT     CODE           ?PR?GENERAL_INIT?ASSIGN2
+00096DH   000977H   00000BH   BYTE   UNIT     CODE           ?PR?_SET_VOLUME?ASSIGN2
+000978H   000982H   00000BH   BYTE   UNIT     CODE           ?PR?_OCTAVE_ADJUST?ASSIGN2
+000983H   00098DH   00000BH   BYTE   UNIT     CODE           ?C_INITSEG
+00098EH   000994H   000007H   BYTE   UNIT     CODE           ?PR?VOLTAGE_REFERENCE_INIT?ASSIGN2
+000995H   00099BH   000007H   BYTE   UNIT     CODE           ?PR?OSCILLATOR_INIT?ASSIGN2
+00099CH   0009A2H   000007H   BYTE   UNIT     CODE           ?PR?DAC_INIT?ASSIGN2
+0009A3H   0009A7H   000005H   BYTE   UNIT     CODE           ?PR?_SET_TONE?ASSIGN2
+0009A8H   0009ABH   000004H   BYTE   UNIT     CODE           ?PR?INTERRUPTS_INIT?ASSIGN2
+0009ACH   0009ACH   000001H   BYTE   UNIT     CODE           ?PR?UPDATEDISPALY?ASSIGN2
+0009ADH   0009C6H   00001AH   BYTE   UNIT     CONST          ?CO?ASSIGN2
 
+
+
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 2
 
 
 OVERLAY MAP OF MODULE:   Assign2 (ASSIGN2)
@@ -64,14 +77,18 @@ FUNCTION/MODULE                      BIT_GROUP   DATA_GROUP
 --> CALLED FUNCTION/MODULE          START  STOP  START  STOP
 ============================================================
 TIMER2_ISR/ASSIGN2                  ----- -----  ----- -----
+  +--> DAC_SINE_WAVE/ASSIGN2
+
+DAC_SINE_WAVE/ASSIGN2               ----- -----  ----- -----
+  +--> ?CO?ASSIGN2
+
+?CO?ASSIGN2                         ----- -----  ----- -----
 
 *** NEW ROOT **********************
 
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 2
-
-
 ?C_C51STARTUP                       ----- -----  ----- -----
   +--> MAIN/ASSIGN2
+  +--> ?C_INITSEG
 
 MAIN/ASSIGN2                        ----- -----  ----- -----
   +--> GENERAL_INIT/ASSIGN2
@@ -90,6 +107,8 @@ DAC_INIT/ASSIGN2                    ----- -----  ----- -----
 
 INTERRUPTS_INIT/ASSIGN2             ----- -----  ----- -----
 
+?C_INITSEG                          ----- -----  ----- -----
+
 
 
 PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
@@ -98,9 +117,13 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
       VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
       =================================================
       00000000H   NUMBER   ---       ?C?CODESEG
+      0100093BH   CODE     ---       ?C?IMUL
       00000000H   NUMBER   ---       ?C?XDATASEG
-      01000800H   CODE     ---       ?C_START
+      01000847H   CODE     ---       ?C_START
       01000000H   CODE     ---       ?C_STARTUP
+      01000978H   CODE     ---       _octave_Adjust
+      010009A3H   CODE     ---       _set_Tone
+      0100096DH   CODE     ---       _Set_Volume
 *SFR* 000000C0H.2 DATA     BIT       AA
 *SFR* 000000D0H.6 DATA     BIT       AC
 *SFR* 000000E0H   DATA     BYTE      ACC
@@ -112,6 +135,9 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000E8H   DATA     BIT       AD0LJST
 *SFR* 000000E8H.6 DATA     BIT       AD0TM
 *SFR* 000000E8H.1 DATA     BIT       AD0WINT
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 3
+
+
 *SFR* 000000E8H.4 DATA     BIT       AD2BUSY
 *SFR* 000000E8H.1 DATA     BIT       AD2CM0
 *SFR* 000000E8H.2 DATA     BIT       AD2CM1
@@ -135,9 +161,6 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000C6H   DATA     BYTE      ADC2LT
 *SFR* 000000BAH   DATA     BYTE      AMX0CF
 *SFR* 000000BBH   DATA     BYTE      AMX0SL
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 3
-
-
 *SFR* 000000BAH   DATA     BYTE      AMX2CF
 *SFR* 000000BBH   DATA     BYTE      AMX2SL
 *SFR* 000000F0H   DATA     BYTE      B
@@ -153,7 +176,6 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 0000009AH   DATA     BYTE      CCH0MA
 *SFR* 000000A2H   DATA     BYTE      CCH0TN
 *SFR* 000000D8H.7 DATA     BIT       CF
-      0100088DH   CODE     ---       CheckInput
 *SFR* 0000008EH   DATA     BYTE      CKCON
 *SFR* 00000097H   DATA     BYTE      CLKSEL
 *SFR* 00000088H.7 DATA     BIT       CP0EN
@@ -181,6 +203,9 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 00000089H   DATA     BYTE      CPT1MD
 *SFR* 000000D8H.6 DATA     BIT       CR
 *SFR* 000000C8H.1 DATA     BIT       CT2
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 4
+
+
 *SFR* 000000C8H.1 DATA     BIT       CT3
 *SFR* 000000C8H.1 DATA     BIT       CT4
 *SFR* 000000D0H.7 DATA     BIT       CY
@@ -190,9 +215,11 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000D4H   DATA     BYTE      DAC1CN
 *SFR* 000000D3H   DATA     BYTE      DAC1H
 *SFR* 000000D2H   DATA     BYTE      DAC1L
-      01000885H   CODE     ---       DAC_Init
+      0100099CH   CODE     ---       DAC_Init
+      0100090DH   CODE     ---       DAC_Sine_Wave
 *SFR* 00000083H   DATA     BYTE      DPH
 *SFR* 00000082H   DATA     BYTE      DPL
+      0000000CH   DATA     WORD      Dtheta
 *SFR* 000000A8H.7 DATA     BIT       EA
 *SFR* 000000E6H   DATA     BYTE      EIE1
 *SFR* 000000E7H   DATA     BYTE      EIE2
@@ -203,9 +230,6 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000A1H   DATA     BYTE      EMI0TC
 *SFR* 000000C0H.6 DATA     BIT       ENSMB
 *SFR* 000000A8H.4 DATA     BIT       ES0
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 4
-
-
 *SFR* 000000A8H.1 DATA     BIT       ET0
 *SFR* 000000A8H.3 DATA     BIT       ET1
 *SFR* 000000A8H.5 DATA     BIT       ET2
@@ -223,13 +247,11 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 00000088H   DATA     BIT       FLHBUSY
 *SFR* 000000B7H   DATA     BYTE      FLSCL
 *SFR* 00000088H   DATA     BYTE      FLSTAT
-      01000859H   CODE     ---       General_Init
-      0100087CH   CODE     ---       Getfrequency
+      0100095DH   CODE     ---       General_Init
 *SFR* 000000A8H   DATA     BYTE      IE
 *SFR* 00000088H.1 DATA     BIT       IE0
 *SFR* 00000088H.3 DATA     BIT       IE1
-      01000890H   CODE     ---       InitDAC
-      01000889H   CODE     ---       Interrupts_Init
+      010009A8H   CODE     ---       Interrupts_Init
 *SFR* 000000B8H   DATA     BYTE      IP
 *SFR* 00000088H   DATA     BIT       IT0
 *SFR* 00000088H.2 DATA     BIT       IT1
@@ -249,6 +271,9 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000C1H   DATA     BYTE      MAC0AL
 *SFR* 00000092H   DATA     BYTE      MAC0BH
 *SFR* 00000091H   DATA     BYTE      MAC0BL
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 5
+
+
 *SFR* 000000C3H   DATA     BYTE      MAC0CF
 *SFR* 000000C0H.3 DATA     BIT       MAC0HO
 *SFR* 000000C0H   DATA     BIT       MAC0N
@@ -258,22 +283,21 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000C0H.1 DATA     BIT       MAC0SO
 *SFR* 000000C0H   DATA     BYTE      MAC0STA
 *SFR* 000000C0H.2 DATA     BIT       MAC0Z
-      01000800H   CODE     ---       main
+      0100088CH   CODE     ---       main
 *SFR* 00000098H.5 DATA     BIT       MCE1
 *SFR* 000000F8H.5 DATA     BIT       MODF
 *SFR* 000000B0H.7 DATA     BIT       MPB
 *SFR* 000000F8H.2 DATA     BIT       NSSMD0
 *SFR* 000000F8H.3 DATA     BIT       NSSMD1
+      00000008H   DATA     BYTE      octave
 *SFR* 0000008BH   DATA     BYTE      OSCICL
 *SFR* 0000008AH   DATA     BYTE      OSCICN
+      01000995H   CODE     ---       Oscillator_Init
 *SFR* 0000008CH   DATA     BYTE      OSCXCN
 *SFR* 000000D0H.2 DATA     BIT       OV
 *SFR* 000000D0H   DATA     BIT       P
 *SFR* 00000080H   DATA     BYTE      P0
 *SFR* 000000A4H   DATA     BYTE      P0MDOUT
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 5
-
-
 *SFR* 00000090H   DATA     BYTE      P1
 *SFR* 000000ADH   DATA     BYTE      P1MDIN
 *SFR* 000000A5H   DATA     BYTE      P1MDOUT
@@ -315,12 +339,14 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000DCH   DATA     BYTE      PCA0CPM2
 *SFR* 000000DDH   DATA     BYTE      PCA0CPM3
 *SFR* 000000DEH   DATA     BYTE      PCA0CPM4
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 6
+
+
 *SFR* 000000DFH   DATA     BYTE      PCA0CPM5
 *SFR* 000000FAH   DATA     BYTE      PCA0H
 *SFR* 000000F9H   DATA     BYTE      PCA0L
 *SFR* 000000D9H   DATA     BYTE      PCA0MD
 *SFR* 00000087H   DATA     BYTE      PCON
-      01000892H   CODE     ---       PlayNote
 *SFR* 00000089H   DATA     BYTE      PLL0CN
 *SFR* 0000008DH   DATA     BYTE      PLL0DIV
 *SFR* 0000008FH   DATA     BYTE      PLL0FLT
@@ -339,9 +365,6 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000CBH   DATA     BYTE      RCAP2H
 *SFR* 000000CAH   DATA     BYTE      RCAP2L
 *SFR* 000000CBH   DATA     BYTE      RCAP3H
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 6
-
-
 *SFR* 000000CAH   DATA     BYTE      RCAP3L
 *SFR* 000000CBH   DATA     BYTE      RCAP4H
 *SFR* 000000CAH   DATA     BYTE      RCAP4L
@@ -361,12 +384,12 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 00000099H   DATA     BYTE      SBUF1
 *SFR* 00000098H   DATA     BYTE      SCON0
 *SFR* 00000098H   DATA     BYTE      SCON1
-      01000891H   CODE     ---       SetDAC
 *SFR* 00000086H   DATA     BYTE      SFRLAST
 *SFR* 00000085H   DATA     BYTE      SFRNEXT
 *SFR* 00000084H   DATA     BYTE      SFRPAGE
 *SFR* 00000096H   DATA     BYTE      SFRPGCN
 *SFR* 000000C0H.3 DATA     BIT       SI
+      010009C5H   CONST    ---       sin
 *SFR* 00000098H.7 DATA     BIT       SM00
 *SFR* 00000098H.6 DATA     BIT       SM10
 *SFR* 00000098H.5 DATA     BIT       SM20
@@ -384,6 +407,9 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 0000009BH   DATA     BYTE      SPI0DAT
 *SFR* 000000F8H   DATA     BIT       SPIEN
 *SFR* 000000F8H.7 DATA     BIT       SPIF
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 7
+
+
 *SFR* 00000091H   DATA     BYTE      SSTA0
 *SFR* 000000C0H.5 DATA     BIT       STA
 *SFR* 000000C0H.4 DATA     BIT       STO
@@ -397,19 +423,17 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000C8H.7 DATA     BIT       TF4
 *SFR* 0000008CH   DATA     BYTE      TH0
 *SFR* 0000008DH   DATA     BYTE      TH1
+      00000009H   DATA     WORD      theta
 *SFR* 00000098H.1 DATA     BIT       TI0
 *SFR* 00000098H.1 DATA     BIT       TI1
-      01000844H   CODE     ---       Timer2_ISR
-      01000881H   CODE     ---       Timer_Init
+      010008D0H   CODE     ---       Timer2_ISR
+      0100094DH   CODE     ---       Timer_Init
 *SFR* 0000008AH   DATA     BYTE      TL0
 *SFR* 0000008BH   DATA     BYTE      TL1
 *SFR* 00000089H   DATA     BYTE      TMOD
 *SFR* 000000C9H   DATA     BYTE      TMR2CF
 *SFR* 000000C8H   DATA     BYTE      TMR2CN
 *SFR* 000000CDH   DATA     BYTE      TMR2H
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 7
-
-
 *SFR* 000000CCH   DATA     BYTE      TMR2L
 *SFR* 000000C9H   DATA     BYTE      TMR3CF
 *SFR* 000000C8H   DATA     BYTE      TMR3CN
@@ -419,14 +443,16 @@ PUBLIC SYMBOLS OF MODULE:  Assign2 (ASSIGN2)
 *SFR* 000000C8H   DATA     BYTE      TMR4CN
 *SFR* 000000CDH   DATA     BYTE      TMR4H
 *SFR* 000000CCH   DATA     BYTE      TMR4L
+      010009ADH   CONST    ---       tone
 *SFR* 00000088H.4 DATA     BIT       TR0
 *SFR* 00000088H.6 DATA     BIT       TR1
 *SFR* 000000C8H.2 DATA     BIT       TR2
 *SFR* 000000C8H.2 DATA     BIT       TR3
 *SFR* 000000C8H.2 DATA     BIT       TR4
 *SFR* 000000F8H.1 DATA     BIT       TXBMT
-      01000893H   CODE     ---       UpdateDispaly
-      01000875H   CODE     ---       Voltage_Reference_Init
+      010009ACH   CODE     ---       UpdateDispaly
+      0100098EH   CODE     ---       Voltage_Reference_Init
+      0000000BH   DATA     BYTE      volume
 *SFR* 000000F8H.6 DATA     BIT       WCOL
 *SFR* 000000FFH   DATA     BYTE      WDTCN
 *SFR* 000000E1H   DATA     BYTE      XBR0
@@ -440,19 +466,28 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       VALUE       REP       CLASS    TYPE      SYMBOL NAME
       ====================================================
       ---         MODULE    ---      ---       ASSIGN2
-      01000844H   PUBLIC    CODE     ---       Timer2_ISR
-      01000889H   PUBLIC    CODE     ---       Interrupts_Init
-      01000885H   PUBLIC    CODE     ---       DAC_Init
-      01000875H   PUBLIC    CODE     ---       Voltage_Reference_Init
-      01000881H   PUBLIC    CODE     ---       Timer_Init
-      01000859H   PUBLIC    CODE     ---       General_Init
-      01000800H   PUBLIC    CODE     ---       main
-      01000893H   PUBLIC    CODE     ---       UpdateDispaly
-      0100088DH   PUBLIC    CODE     ---       CheckInput
-      0100087CH   PUBLIC    CODE     ---       Getfrequency
-      01000892H   PUBLIC    CODE     ---       PlayNote
-      01000891H   PUBLIC    CODE     ---       SetDAC
-      01000890H   PUBLIC    CODE     ---       InitDAC
+      0000000CH   PUBLIC    DATA     WORD      Dtheta
+      0000000BH   PUBLIC    DATA     BYTE      volume
+      00000009H   PUBLIC    DATA     WORD      theta
+      00000008H   PUBLIC    DATA     BYTE      octave
+      010009C5H   PUBLIC    CONST    ---       sin
+      010009ADH   PUBLIC    CONST    ---       tone
+      0100095DH   PUBLIC    CODE     ---       General_Init
+      0100088CH   PUBLIC    CODE     ---       main
+      010009ACH   PUBLIC    CODE     ---       UpdateDispaly
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 8
+
+
+      010009A3H   PUBLIC    CODE     ---       _set_Tone
+      01000978H   PUBLIC    CODE     ---       _octave_Adjust
+      0100096DH   PUBLIC    CODE     ---       _Set_Volume
+      0100090DH   PUBLIC    CODE     ---       DAC_Sine_Wave
+      010008D0H   PUBLIC    CODE     ---       Timer2_ISR
+      010009A8H   PUBLIC    CODE     ---       Interrupts_Init
+      0100099CH   PUBLIC    CODE     ---       DAC_Init
+      0100094DH   PUBLIC    CODE     ---       Timer_Init
+      01000995H   PUBLIC    CODE     ---       Oscillator_Init
+      0100098EH   PUBLIC    CODE     ---       Voltage_Reference_Init
       000000D8H.2 SFRSYM    DATA     BIT       CCF2
       00000098H.3 SFRSYM    DATA     BIT       TB80
       0000009DH   SFRSYM    DATA     BYTE      SPI0CKR
@@ -475,9 +510,6 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       000000D0H.6 SFRSYM    DATA     BIT       AC
       000000C8H   SFRSYM    DATA     BYTE      P4
       000000E6H   SFRSYM    DATA     BYTE      EIE1
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 8
-
-
       000000D8H   SFRSYM    DATA     BYTE      P5
       000000BCH   SFRSYM    DATA     BYTE      ADC2CF
       000000A8H.7 SFRSYM    DATA     BIT       EA
@@ -511,6 +543,9 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       000000A1H   SFRSYM    DATA     BYTE      CCH0CN
       0000009DH   SFRSYM    DATA     BYTE      P5MDOUT
       00000091H   SFRSYM    DATA     BYTE      MAC0BL
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 9
+
+
       000000FCH   SFRSYM    DATA     BYTE      PCA0CPH0
       0000009EH   SFRSYM    DATA     BYTE      P6MDOUT
       000000FEH   SFRSYM    DATA     BYTE      PCA0CPH1
@@ -543,9 +578,6 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       000000EDH   SFRSYM    DATA     BYTE      PCA0CPL4
       000000DDH   SFRSYM    DATA     BYTE      PCA0CPM3
       00000088H.4 SFRSYM    DATA     BIT       CP1FIF
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 9
-
-
       000000E1H   SFRSYM    DATA     BYTE      PCA0CPL5
       000000DEH   SFRSYM    DATA     BYTE      PCA0CPM4
       000000D0H.7 SFRSYM    DATA     BIT       CY
@@ -579,6 +611,9 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       000000CAH   SFRSYM    DATA     BYTE      RCAP2L
       000000F8H.5 SFRSYM    DATA     BIT       MODF
       00000088H.5 SFRSYM    DATA     BIT       CP1RIF
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 10
+
+
       000000CAH   SFRSYM    DATA     BYTE      RCAP3L
       000000CAH   SFRSYM    DATA     BYTE      RCAP4L
       000000CFH   SFRSYM    DATA     BYTE      SMB0CR
@@ -611,9 +646,6 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       00000088H.6 SFRSYM    DATA     BIT       CP0OUT
       00000088H.6 SFRSYM    DATA     BIT       CP1OUT
       00000088H.1 SFRSYM    DATA     BIT       IE0
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 10
-
-
       00000088H.3 SFRSYM    DATA     BIT       IE1
       0000008BH   SFRSYM    DATA     BYTE      OSCICL
       00000097H   SFRSYM    DATA     BYTE      CLKSEL
@@ -647,6 +679,9 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       00000090H.6 SFRSYM    DATA     BIT       PB7
       000000E8H.7 SFRSYM    DATA     BIT       AD0EN
       000000C8H.1 SFRSYM    DATA     BIT       CT2
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 11
+
+
       000000A8H.1 SFRSYM    DATA     BIT       ET0
       00000090H.7 SFRSYM    DATA     BIT       PB8
       000000C8H.1 SFRSYM    DATA     BIT       CT3
@@ -679,9 +714,6 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       000000F9H   SFRSYM    DATA     BYTE      PCA0L
       0000008BH   SFRSYM    DATA     BYTE      TL1
       000000B8H.1 SFRSYM    DATA     BIT       PT0
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 11
-
-
       000000D0H.3 SFRSYM    DATA     BIT       RS0
       000000B8H.3 SFRSYM    DATA     BIT       PT1
       000000D0H.4 SFRSYM    DATA     BIT       RS1
@@ -715,6 +747,9 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       00000098H   SFRSYM    DATA     BYTE      SCON0
       000000C8H.3 SFRSYM    DATA     BIT       EXEN4
       000000C8H   SFRSYM    DATA     BIT       CPRL3
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 12
+
+
       00000088H   SFRSYM    DATA     BIT       CP1HYN0
       00000088H.1 SFRSYM    DATA     BIT       CP0HYN1
       00000098H   SFRSYM    DATA     BYTE      SCON1
@@ -747,9 +782,6 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       000000C0H.4 SFRSYM    DATA     BIT       STO
       000000C0H.6 SFRSYM    DATA     BIT       ENSMB
       000000E8H.3 SFRSYM    DATA     BIT       AD0CM1
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 12
-
-
       0000009BH   SFRSYM    DATA     BYTE      SPI0DAT
       000000E8H.1 SFRSYM    DATA     BIT       AD2CM0
       000000E8H.2 SFRSYM    DATA     BIT       AD2CM1
@@ -772,147 +804,171 @@ SYMBOL TABLE OF MODULE:  Assign2 (ASSIGN2)
       00000096H   SFRSYM    DATA     BYTE      MAC0ACC3
       0000008DH   SFRSYM    DATA     BYTE      PLL0DIV
 
-      01000890H   BLOCK     CODE     ---       LVL=0
-      01000890H   LINE      CODE     ---       #40
-      01000890H   LINE      CODE     ---       #41
-      01000890H   LINE      CODE     ---       #43
+      0100098EH   BLOCK     CODE     ---       LVL=0
+      0100098EH   LINE      CODE     ---       #76
+      0100098EH   LINE      CODE     ---       #77
+      0100098EH   LINE      CODE     ---       #78
+      01000991H   LINE      CODE     ---       #79
+      01000994H   LINE      CODE     ---       #80
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000891H   BLOCK     CODE     ---       LVL=0
-      01000891H   LINE      CODE     ---       #44
-      01000891H   LINE      CODE     ---       #45
-      01000891H   LINE      CODE     ---       #47
+      01000995H   BLOCK     CODE     ---       LVL=0
+      01000995H   LINE      CODE     ---       #92
+      01000995H   LINE      CODE     ---       #93
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 13
+
+
+      01000995H   LINE      CODE     ---       #94
+      01000998H   LINE      CODE     ---       #95
+      0100099BH   LINE      CODE     ---       #96
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000892H   BLOCK     CODE     ---       LVL=0
-      01000892H   LINE      CODE     ---       #48
-      01000892H   LINE      CODE     ---       #49
-      01000892H   LINE      CODE     ---       #53
+      0100094DH   BLOCK     CODE     ---       LVL=0
+      0100094DH   LINE      CODE     ---       #108
+      0100094DH   LINE      CODE     ---       #109
+      0100094DH   LINE      CODE     ---       #110
+      01000950H   LINE      CODE     ---       #111
+      01000953H   LINE      CODE     ---       #112
+      01000956H   LINE      CODE     ---       #113
+      01000959H   LINE      CODE     ---       #114
+      0100095CH   LINE      CODE     ---       #115
       ---         BLOCKEND  ---      ---       LVL=0
 
-      0100087CH   BLOCK     CODE     ---       LVL=0
-      0100087CH   LINE      CODE     ---       #55
-      0100087CH   LINE      CODE     ---       #56
-      0100087CH   LINE      CODE     ---       #71
-      01000880H   LINE      CODE     ---       #72
+      0100099CH   BLOCK     CODE     ---       LVL=0
+      0100099CH   LINE      CODE     ---       #127
+      0100099CH   LINE      CODE     ---       #128
+      0100099CH   LINE      CODE     ---       #130
+      0100099FH   LINE      CODE     ---       #131
+      010009A2H   LINE      CODE     ---       #132
       ---         BLOCKEND  ---      ---       LVL=0
 
-      0100088DH   BLOCK     CODE     ---       LVL=0
-      0100088DH   LINE      CODE     ---       #30
-      0100088DH   LINE      CODE     ---       #31
-      0100088DH   LINE      CODE     ---       #47
+      010009A8H   BLOCK     CODE     ---       LVL=0
+      010009A8H   LINE      CODE     ---       #144
+      010009A8H   LINE      CODE     ---       #145
+      010009A8H   LINE      CODE     ---       #146
+      010009ABH   LINE      CODE     ---       #147
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000893H   BLOCK     CODE     ---       LVL=0
-      01000893H   LINE      CODE     ---       #51
-      01000893H   LINE      CODE     ---       #52
-      01000893H   LINE      CODE     ---       #55
+      010008D0H   BLOCK     CODE     ---       LVL=0
+      010008D0H   LINE      CODE     ---       #159
+      010008EDH   LINE      CODE     ---       #161
+      010008F0H   LINE      CODE     ---       #163
+      010008F2H   LINE      CODE     ---       #165
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000800H   BLOCK     CODE     ---       LVL=0
-      01000800H   LINE      CODE     ---       #31
-      01000800H   LINE      CODE     ---       #32
-      01000800H   LINE      CODE     ---       #33
-      01000803H   LINE      CODE     ---       #34
-      01000806H   LINE      CODE     ---       #35
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 13
-
-
-      01000809H   LINE      CODE     ---       #36
-      0100080CH   LINE      CODE     ---       #37
-      0100080FH   LINE      CODE     ---       #39
-      0100080FH   LINE      CODE     ---       #40
-      0100080FH   LINE      CODE     ---       #44
-      01000814H   LINE      CODE     ---       #45
-      01000819H   LINE      CODE     ---       #46
-      0100081EH   LINE      CODE     ---       #47
-      01000823H   LINE      CODE     ---       #48
-      01000828H   LINE      CODE     ---       #49
-      0100082DH   LINE      CODE     ---       #50
-      01000832H   LINE      CODE     ---       #52
-      0100083CH   LINE      CODE     ---       #53
-      01000840H   LINE      CODE     ---       #55
-      01000842H   LINE      CODE     ---       #56
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000859H   BLOCK     CODE     ---       LVL=0
-      01000859H   LINE      CODE     ---       #67
-      01000859H   LINE      CODE     ---       #68
-      01000859H   LINE      CODE     ---       #69
-      0100085CH   LINE      CODE     ---       #70
-      0100085FH   LINE      CODE     ---       #71
-      01000862H   LINE      CODE     ---       #72
-      01000865H   LINE      CODE     ---       #74
-      01000868H   LINE      CODE     ---       #75
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000881H   BLOCK     CODE     ---       LVL=0
-      01000881H   LINE      CODE     ---       #85
-      01000881H   LINE      CODE     ---       #86
-      01000881H   LINE      CODE     ---       #87
-      01000884H   LINE      CODE     ---       #91
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000875H   BLOCK     CODE     ---       LVL=0
-      01000875H   LINE      CODE     ---       #101
-      01000875H   LINE      CODE     ---       #102
-      01000875H   LINE      CODE     ---       #103
-      01000878H   LINE      CODE     ---       #104
-      0100087BH   LINE      CODE     ---       #105
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000885H   BLOCK     CODE     ---       LVL=0
-      01000885H   LINE      CODE     ---       #115
-      01000885H   LINE      CODE     ---       #116
-      01000885H   LINE      CODE     ---       #117
-      01000888H   LINE      CODE     ---       #120
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000889H   BLOCK     CODE     ---       LVL=0
-      01000889H   LINE      CODE     ---       #130
-      01000889H   LINE      CODE     ---       #131
-      01000889H   LINE      CODE     ---       #132
-      0100088CH   LINE      CODE     ---       #133
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000844H   BLOCK     CODE     ---       LVL=0
-      0100084BH   BLOCK     CODE     NEAR LAB  LVL=1
-      00000007H   SYMBOL    DATA     BYTE      SFRPAGE_SAVE
+      0100090DH   BLOCK     CODE     ---       LVL=0
+      0100090DH   BLOCK     CODE     NEAR LAB  LVL=1
+      00000007H   SYMBOL    DATA     BYTE      i
       ---         BLOCKEND  ---      ---       LVL=1
-      01000844H   LINE      CODE     ---       #143
-      0100084BH   LINE      CODE     ---       #145
-      0100084DH   LINE      CODE     ---       #147
-      01000850H   LINE      CODE     ---       #151
-LX51 LINKER/LOCATER V4.66.30.0                                                        04/22/2015  14:21:26  PAGE 14
+      0100090DH   LINE      CODE     ---       #178
+      0100090DH   LINE      CODE     ---       #179
+      0100090FH   LINE      CODE     ---       #180
+      0100092EH   LINE      CODE     ---       #181
+      0100093AH   LINE      CODE     ---       #182
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100096DH   BLOCK     CODE     ---       LVL=0
+      00000007H   SYMBOL    DATA     BYTE      i
+      0100096DH   LINE      CODE     ---       #196
+      0100096DH   LINE      CODE     ---       #197
+      01000973H   LINE      CODE     ---       #198
+      01000975H   LINE      CODE     ---       #199
+      01000975H   LINE      CODE     ---       #200
+      01000977H   LINE      CODE     ---       #201
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000978H   BLOCK     CODE     ---       LVL=0
+      0000000EH   SYMBOL    DATA     BYTE      OCT
+      0000000FH   SYMBOL    DATA     WORD      tone_fr
+      01000978H   LINE      CODE     ---       #204
+      0100097EH   LINE      CODE     ---       #205
+      0100097EH   LINE      CODE     ---       #207
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 14
 
 
-      01000852H   LINE      CODE     ---       #152
-      01000854H   LINE      CODE     ---       #153
+      01000982H   LINE      CODE     ---       #208
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010009A3H   BLOCK     CODE     ---       LVL=0
+      00000006H   SYMBOL    DATA     WORD      i
+      010009A3H   LINE      CODE     ---       #210
+      010009A3H   LINE      CODE     ---       #211
+      010009A3H   LINE      CODE     ---       #212
+      010009A7H   LINE      CODE     ---       #213
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010009ACH   BLOCK     CODE     ---       LVL=0
+      010009ACH   LINE      CODE     ---       #121
+      010009ACH   LINE      CODE     ---       #122
+      010009ACH   LINE      CODE     ---       #125
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100088CH   BLOCK     CODE     ---       LVL=0
+      0100088CH   LINE      CODE     ---       #37
+      0100088CH   LINE      CODE     ---       #38
+      0100088CH   LINE      CODE     ---       #40
+      0100088FH   LINE      CODE     ---       #41
+      01000892H   LINE      CODE     ---       #42
+      01000895H   LINE      CODE     ---       #43
+      01000898H   LINE      CODE     ---       #44
+      0100089BH   LINE      CODE     ---       #46
+      0100089BH   LINE      CODE     ---       #47
+      0100089BH   LINE      CODE     ---       #51
+      010008A0H   LINE      CODE     ---       #52
+      010008A5H   LINE      CODE     ---       #53
+      010008AAH   LINE      CODE     ---       #54
+      010008AFH   LINE      CODE     ---       #55
+      010008B4H   LINE      CODE     ---       #56
+      010008B9H   LINE      CODE     ---       #57
+      010008BEH   LINE      CODE     ---       #59
+      010008C8H   LINE      CODE     ---       #60
+      010008CCH   LINE      CODE     ---       #62
+      010008CEH   LINE      CODE     ---       #63
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100095DH   BLOCK     CODE     ---       LVL=0
+      0100095DH   LINE      CODE     ---       #74
+      0100095DH   LINE      CODE     ---       #75
+      0100095DH   LINE      CODE     ---       #76
+      01000960H   LINE      CODE     ---       #77
+      01000963H   LINE      CODE     ---       #78
+      01000966H   LINE      CODE     ---       #79
+      01000969H   LINE      CODE     ---       #80
+      0100096CH   LINE      CODE     ---       #81
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       ?C_STARTUP
       01000000H   PUBLIC    CODE     ---       ?C_STARTUP
 
+      ---         MODULE    ---      ---       ?C?IMUL
+      0100093BH   PUBLIC    CODE     ---       ?C?IMUL
+
+      ---         MODULE    ---      ---       ?C_INIT
+      01000847H   PUBLIC    CODE     ---       ?C_START
+
+
+
+*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
+    NAME:    OSCILLATOR_INIT/ASSIGN2
+
+LX51 LINKER/LOCATER V4.66.30.0                                                        04/23/2015  14:52:47  PAGE 15
 
 
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
-    NAME:    INITDAC/ASSIGN2
+    NAME:    _SET_VOLUME/ASSIGN2
 
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
-    NAME:    SETDAC/ASSIGN2
+    NAME:    _OCTAVE_ADJUST/ASSIGN2
 
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
-    NAME:    PLAYNOTE/ASSIGN2
+    NAME:    _SET_TONE/ASSIGN2
 
 *** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
-    NAME:    GETFREQUENCY/ASSIGN2
-
-*** WARNING L57: UNCALLED FUNCTION, IGNORED FOR OVERLAY PROCESS
-    NAME:    CHECKINPUT/ASSIGN2
+    NAME:    UPDATEDISPALY/ASSIGN2
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008BH BYTE ( 6%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 012BH BYTE (14%) *
 ******************************************************************************
 
-Program Size: data=9.0 xdata=0 const=0 code=154
+Program Size: data=18.0 xdata=0 const=26 code=435
 LX51 RUN COMPLETE.  5 WARNING(S),  0 ERROR(S)

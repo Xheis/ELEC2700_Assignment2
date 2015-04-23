@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/22/2015 14:21:26 PAGE 1   
+C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 14:52:47 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE ASSIGN2
@@ -21,180 +21,92 @@ line level    source
   11          
   12                  Notes:          
   13              Basic Structure is being implemented. The code is limited to strict C.
-  14                  Revisions:    v0.1 Alpha
-  15          
-  16          __________________________________________________________________________________________________________
+  14              Current c51.exe compiler compiles the program, however gives 5 warnings of "Uncalled Functions".
+  15              This is okay as we're implimenting stub programs.
+  16              
+  17                  Revisions:    v0.1 Alpha
+  18          
+  19          __________________________________________________________________________________________________________
              -___________*/
-  17          #include <SiLABS/C8051F120.h>     //"C:\Programming\Keil_v5\C51\INC\SiLABS\c8051F120.h"
-  18          //#include <C8051F120_defs.h>     // SFR declarations
-  19          #include "Assign2.h"
-  20          #include "Notes.h"
-  21          #include "Keyboard.h"
-  22          
-  23          /*--------------------------------------------------------------------------------------------------------
-             -------------
-  24                  Function:         Main
+  20          #include <SiLABS/C8051F120.h>     //"C:\Programming\Keil_v5\C51\INC\SiLABS\c8051F120.h"
+  21          //#include <C8051F120_defs.h>     // SFR declarations
+  22          #include "Assign2.h"
+  23          #include "Notes.h"
+*** WARNING C280 IN LINE 204 OF Notes.h: 'OCT': unreferenced local variable
+*** WARNING C280 IN LINE 204 OF Notes.h: 'tone_fr': unreferenced local variable
+  24          #include "Keyboard.h"
   25          
-  26                  Description:      Main routine
-  27          
-  28                  Revisions:
-  29          
-  30          ----------------------------------------------------------------------------------------------------------
-             -----------*/
-  31          void main(void)
-  32          {
-  33   1        General_Init();
-  34   1        Timer_Init();
-  35   1        Voltage_Reference_Init();
-  36   1        DAC_Init();
-  37   1        Interrupts_Init();
-  38   1      
-  39   1        while(1)
-  40   1        { 
-  41   2          // Do stuff here ??
-  42   2      
-  43   2          // Try this code out to test the pushbuttons and LEDs as defined in Assign2.h
-  44   2          LD1 = ~PB1; // Note the ~ means "complement"
-  45   2          LD2 = ~PB2;
-  46   2          LD3 = ~PB3;
-  47   2          LD4 = ~PB4;
-  48   2          LD5 = ~PB5;
-  49   2          LD6 = ~PB6;
-  50   2          LD7 = ~PB7;
-  51   2      
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/22/2015 14:21:26 PAGE 2   
-
-  52   2          if ((~MPB) || (~PB8))  // What does this do.....Note that MPB is the P3.7 push button on the 8051 board
-  53   2            LD8 = 1;
-  54   2          else 
-  55   2            LD8 = 0;
-  56   2        }
-  57   1      }
-  58          
-  59          /*--------------------------------------------------------------------------------------------------------
+  26          void main(void);
+  27          void General_Init(void);
+  28          
+  29          /*--------------------------------------------------------------------------------------------------------
              -------------
-  60                  Function:         General_Init
-  61          
-  62                  Description:      Initialise ports, watchdog....
-  63          
-  64                  Revisions:
+  30                  Function:         Main
+  31          
+  32                  Description:      Main routine
+  33          
+  34                  Revisions:
+  35          
+  36          ----------------------------------------------------------------------------------------------------------
+             -----------*/
+  37          void main(void)
+  38          {
+  39   1        //printf("Hello World");
+  40   1        General_Init();
+  41   1        Timer_Init();
+  42   1        Voltage_Reference_Init();
+  43   1        DAC_Init();
+  44   1        Interrupts_Init();
+  45   1      
+  46   1        while(1)
+  47   1        { 
+  48   2          // Do stuff here ??
+  49   2      
+C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 14:52:47 PAGE 2   
+
+  50   2          // Try this code out to test the pushbuttons and LEDs as defined in Assign2.h
+  51   2          LD1 = ~PB1; // Note the ~ means "complement"
+  52   2          LD2 = ~PB2;
+  53   2          LD3 = ~PB3;
+  54   2          LD4 = ~PB4;
+  55   2          LD5 = ~PB5;
+  56   2          LD6 = ~PB6;
+  57   2          LD7 = ~PB7;
+  58   2      
+  59   2          if ((~MPB) || (~PB8))  // What does this do.....Note that MPB is the P3.7 push button on the 8051 board
+  60   2            LD8 = 1;
+  61   2          else 
+  62   2            LD8 = 0;
+  63   2        }
+  64   1      }
   65          
-  66          ----------------------------------------------------------------------------------------------------------
-             -----------*/
-  67          void General_Init()
-  68          {
-  69   1        WDTCN = 0xde;
-  70   1        WDTCN = 0xad;
-  71   1        SFRPAGE = CONFIG_PAGE;
-  72   1        P2MDOUT = 0xff;   // Need to make pushpull outputs to drive LEDs properly
-  73   1      
-  74   1        XBR2 = 0x40;
-  75   1      }
-  76          
-  77          /*--------------------------------------------------------------------------------------------------------
+  66          /*--------------------------------------------------------------------------------------------------------
              -------------
-  78                  Function:         Timer_Init
-  79          
-  80                  Description:      Initialise timer ports and registers
-  81          
-  82                  Revisions:
-  83          
-  84          ----------------------------------------------------------------------------------------------------------
+  67                  Function:         General_Init
+  68          
+  69                  Description:      Initialise ports, watchdog....
+  70          
+  71                  Revisions:
+  72          
+  73          ----------------------------------------------------------------------------------------------------------
              -----------*/
-  85          void Timer_Init()
-  86          {
-  87   1        SFRPAGE   = TMR2_PAGE;
-  88   1      
-  89   1        // Configuration goes here.............
-  90   1      
-  91   1      }
-  92          
-  93          /*--------------------------------------------------------------------------------------------------------
-             -------------
-  94                  Function:         Voltage_Reference_Init
-  95          
-  96                  Description:      Initialise voltage references (Needed for DAC)
-  97          
-  98                  Revisions:
-  99          
- 100          ----------------------------------------------------------------------------------------------------------
-             -----------*/
- 101          void Voltage_Reference_Init()
- 102          {
- 103   1        SFRPAGE   = ADC0_PAGE;
- 104   1        REF0CN    = 0x03; // Turn on internal bandgap reference and output buffer to get 2.4V reference (pg 107)
- 105   1      }
- 106          
- 107          /*--------------------------------------------------------------------------------------------------------
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/22/2015 14:21:26 PAGE 3   
-
-             -------------
- 108                  Function:         DAC_Init
- 109          
- 110                  Description:      Initialise DAC0. 
- 111          
- 112                  Revisions:
- 113          
- 114          ----------------------------------------------------------------------------------------------------------
-             -----------*/
- 115          void DAC_Init()
- 116          {
- 117   1        SFRPAGE   = DAC0_PAGE;
- 118   1      
- 119   1          // Configuration goes here...........
- 120   1      }
- 121          
- 122          /*--------------------------------------------------------------------------------------------------------
-             -------------
- 123                  Function:         Interrupts_Init
- 124          
- 125                  Description:      Initialise interrupts
- 126          
- 127                  Revisions:
- 128          
- 129          ----------------------------------------------------------------------------------------------------------
-             -----------*/
- 130          void Interrupts_Init()
- 131          {
- 132   1        IE        = 0xA0;  // Global enable interrupt + timer 2 interrupt
- 133   1      }
- 134          
- 135          /*--------------------------------------------------------------------------------------------------------
-             -------------
- 136                  Function:         Timer2_ISR
- 137          
- 138                  Description:      
- 139          
- 140                  Revisions:
- 141          
- 142          ----------------------------------------------------------------------------------------------------------
-             -----------*/
- 143          void Timer2_ISR (void) interrupt 5
- 144          {
- 145   1        unsigned char SFRPAGE_SAVE = SFRPAGE;        // Save Current SFR page
- 146   1      
- 147   1        SFRPAGE   = DAC0_PAGE;
- 148   1      
- 149   1        // Work to do here.......
- 150   1        
- 151   1        TF2 = 0;        // Reset Interrupt
- 152   1        SFRPAGE = SFRPAGE_SAVE;                     // Restore SFR page
- 153   1      }
- 154          
- 155          
- 156          
- 157          
- 158          
+  74          void General_Init()
+  75          {
+  76   1        WDTCN = 0xde;
+  77   1        WDTCN = 0xad;
+  78   1        SFRPAGE = CONFIG_PAGE;
+  79   1        P2MDOUT = 0xff;   // Need to make pushpull outputs to drive LEDs properly
+  80   1        XBR2 = 0x40;
+  81   1      }
+  82          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    139    ----
-   CONSTANT SIZE    =   ----    ----
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/22/2015 14:21:26 PAGE 4   
-
+   CODE SIZE        =    263    ----
+   CONSTANT SIZE    =     26    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =      6       3
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
@@ -204,4 +116,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

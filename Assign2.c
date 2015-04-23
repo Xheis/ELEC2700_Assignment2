@@ -38,6 +38,7 @@ void main(void)
 {
 	//printf("Hello World");
 	General_Init();
+	Oscillator_Init();
 	Timer_Init();
   Voltage_Reference_Init();
 	DAC_Init();

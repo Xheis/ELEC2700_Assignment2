@@ -34,6 +34,7 @@
 #define  	WAVE_RESOLUTION    256   	// Our 256bit sine wave resolution
 #define    	MAX_VOLUME        16    	// 16 different volumes
 #define 	SINE_OFFSET     128 		// DC offset for sin wave
+#define 	DEFAULT_OCTAVE	4
 
 
 /*    Global Variables        */
@@ -41,8 +42,8 @@ unsigned  int    data    theta = 0;
 
 
 /* Variable for moving through the 8-bit sine wave */
-unsigned char    data     volume = 	7; 	/* Volume 0-15. 0=> mute, 15=> max */
-unsigned char    data    octave = 	4; 	/* Set inital octave to 4 */
+unsigned char    data     volume = 	15; 	/* Volume 0-15. 0=> mute, 15=> max */
+unsigned char    data    octave = 	7; 	/* Set inital octave to 4 */
 
 /* Tones and their frequencies 		C		C#		D		Eb		E		F		F#		G		G#		A		Bb		B	*/
 unsigned short	 code	tone[]	=	{262,	277,	294,	311,	330,	349,	370,	392,	415,	440,	466,	494};
@@ -201,10 +202,19 @@ void DAC_Sine_Wave(void){
 }
 
 
-unsigned short octave_Adjust(unsigned char OCT, unsigned short tone_fr)
-{
-
-    return(440);
+unsigned short octave_Adjust(unsigned char OCT, unsigned char piano_key_select)
+{		
+		char move = OCT - DEFAULT_OCTAVE;
+		unsigned short altered_FREQ = tone[piano_key_select];
+		
+		if(move>0){
+			altered_FREQ = altered_FREQ<<(move); /* multiply by 2^move */
+		}else if(move<0){
+			move = -move; /* make move positive */
+			altered_FREQ = altered_FREQ>>(move); /* divide by 2^move */
+		}
+		
+    return(altered_FREQ);
 }
 
 void set_Tone(unsigned short i)

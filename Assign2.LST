@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 15:34:15 PAGE 1   
+C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 16:05:50 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE ASSIGN2
@@ -32,9 +32,9 @@ line level    source
   21          //#include <C8051F120_defs.h>     // SFR declarations
   22          #include "Assign2.h"
   23          #include "Notes.h"
-*** WARNING C280 IN LINE 204 OF Notes.h: 'OCT': unreferenced local variable
-*** WARNING C280 IN LINE 204 OF Notes.h: 'tone_fr': unreferenced local variable
+*** WARNING C235 IN LINE 206 OF Notes.h: parameter 2: different types
   24          #include "Keyboard.h"
+*** WARNING C235 IN LINE 28 OF Keyboard.h: parameter 2: different types
   25          
   26          void main(void);
   27          void General_Init(void);
@@ -53,45 +53,46 @@ line level    source
   38          {
   39   1        //printf("Hello World");
   40   1        General_Init();
-  41   1        Timer_Init();
-  42   1        Voltage_Reference_Init();
-  43   1        DAC_Init();
-  44   1        Interrupts_Init();
-  45   1      
-  46   1        while(1)
-  47   1        { PB_to_select_Tone();
-  48   2        }
-  49   1      }
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 15:34:15 PAGE 2   
+  41   1        Oscillator_Init();
+  42   1        Timer_Init();
+  43   1        Voltage_Reference_Init();
+  44   1        DAC_Init();
+  45   1        Interrupts_Init();
+  46   1      
+  47   1        while(1)
+  48   1        { PB_to_select_Tone();
+  49   2        }
+C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 16:05:50 PAGE 2   
 
-  50          
-  51          /*--------------------------------------------------------------------------------------------------------
+  50   1      }
+  51          
+  52          /*--------------------------------------------------------------------------------------------------------
              -------------
-  52                  Function:         General_Init
-  53          
-  54                  Description:      Initialise ports, watchdog....
-  55          
-  56                  Revisions:
-  57          
-  58          ----------------------------------------------------------------------------------------------------------
+  53                  Function:         General_Init
+  54          
+  55                  Description:      Initialise ports, watchdog....
+  56          
+  57                  Revisions:
+  58          
+  59          ----------------------------------------------------------------------------------------------------------
              -----------*/
-  59          void General_Init()
-  60          {
-  61   1        WDTCN = 0xde;
-  62   1        WDTCN = 0xad;
-  63   1        SFRPAGE = CONFIG_PAGE;
-  64   1        P2MDOUT = 0xff;   // Need to make pushpull outputs to drive LEDs properly
-  65   1        XBR2 = 0x40;
-  66   1      }
-  67          
+  60          void General_Init()
+  61          {
+  62   1        WDTCN = 0xde;
+  63   1        WDTCN = 0xad;
+  64   1        SFRPAGE = CONFIG_PAGE;
+  65   1        P2MDOUT = 0xff;   // Need to make pushpull outputs to drive LEDs properly
+  66   1        XBR2 = 0x40;
+  67   1      }
+  68          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    406    ----
-   CONSTANT SIZE    =     26    ----
+   CODE SIZE        =    475    ----
+   CONSTANT SIZE    =    280    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      6       3
+   DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----

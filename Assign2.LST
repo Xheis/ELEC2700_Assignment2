@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 14:52:47 PAGE 1   
+C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 15:34:15 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE ASSIGN2
@@ -59,50 +59,35 @@ line level    source
   44   1        Interrupts_Init();
   45   1      
   46   1        while(1)
-  47   1        { 
-  48   2          // Do stuff here ??
-  49   2      
-C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 14:52:47 PAGE 2   
+  47   1        { PB_to_select_Tone();
+  48   2        }
+  49   1      }
+C51 COMPILER V9.53.0.0   ASSIGN2                                                           04/23/2015 15:34:15 PAGE 2   
 
-  50   2          // Try this code out to test the pushbuttons and LEDs as defined in Assign2.h
-  51   2          LD1 = ~PB1; // Note the ~ means "complement"
-  52   2          LD2 = ~PB2;
-  53   2          LD3 = ~PB3;
-  54   2          LD4 = ~PB4;
-  55   2          LD5 = ~PB5;
-  56   2          LD6 = ~PB6;
-  57   2          LD7 = ~PB7;
-  58   2      
-  59   2          if ((~MPB) || (~PB8))  // What does this do.....Note that MPB is the P3.7 push button on the 8051 board
-  60   2            LD8 = 1;
-  61   2          else 
-  62   2            LD8 = 0;
-  63   2        }
-  64   1      }
-  65          
-  66          /*--------------------------------------------------------------------------------------------------------
+  50          
+  51          /*--------------------------------------------------------------------------------------------------------
              -------------
-  67                  Function:         General_Init
-  68          
-  69                  Description:      Initialise ports, watchdog....
-  70          
-  71                  Revisions:
-  72          
-  73          ----------------------------------------------------------------------------------------------------------
+  52                  Function:         General_Init
+  53          
+  54                  Description:      Initialise ports, watchdog....
+  55          
+  56                  Revisions:
+  57          
+  58          ----------------------------------------------------------------------------------------------------------
              -----------*/
-  74          void General_Init()
-  75          {
-  76   1        WDTCN = 0xde;
-  77   1        WDTCN = 0xad;
-  78   1        SFRPAGE = CONFIG_PAGE;
-  79   1        P2MDOUT = 0xff;   // Need to make pushpull outputs to drive LEDs properly
-  80   1        XBR2 = 0x40;
-  81   1      }
-  82          
+  59          void General_Init()
+  60          {
+  61   1        WDTCN = 0xde;
+  62   1        WDTCN = 0xad;
+  63   1        SFRPAGE = CONFIG_PAGE;
+  64   1        P2MDOUT = 0xff;   // Need to make pushpull outputs to drive LEDs properly
+  65   1        XBR2 = 0x40;
+  66   1      }
+  67          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    263    ----
+   CODE SIZE        =    406    ----
    CONSTANT SIZE    =     26    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

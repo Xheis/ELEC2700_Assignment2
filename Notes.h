@@ -51,7 +51,7 @@ const char    code    sin[] = {
                                     /* DAC voltages for 8-bit, 16 volume sine wave */
                                     /* ------------------------------------------------------------------------ */
                                     
-                                   1,2 // #include "sine_8_bits.csv"    /* 256 piece sine wave */
+                                    #include "sine_8_bits.csv"    /* 256 piece sine wave */
                                 };
 								
 volatile unsigned short Dtheta;		//Our Dtheta variable does...

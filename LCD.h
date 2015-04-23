@@ -28,8 +28,20 @@
 
 #include <string.h>
 
-/* Definitions				*\
-#define 
+/* Definitions				*/
+#define FUNCTION_SET 0x2
+
+sbit DB4 = 				P3 ^ 0;	/* Data bit 4 */
+sbit DB5 = 				P3 ^ 1;	/* Data bit 5 */
+sbit DB6 = 				P3 ^ 2;	/* Data bit 6 */
+sbit DB7 = 				P3 ^ 3;	/* Data bit 7 */
+sbit RS = 				P3 ^ 4;	/* Register select */
+sbit R_W = 				P3 ^ 5;	/* Read/Write */
+sbit ENABLE = 		P3 ^ 6;	/* Enable signal */
+
+
+
+
 void initLCD(void){
 }
 

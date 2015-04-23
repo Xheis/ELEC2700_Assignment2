@@ -44,22 +44,7 @@ void main(void)
   Interrupts_Init();
 
 	while(1)
-	{	
-		// Do stuff here ??
-
-		// Try this code out to test the pushbuttons and LEDs as defined in Assign2.h
-		LD1 = ~PB1;	// Note the ~ means "complement"
-		LD2 = ~PB2;
-		LD3 = ~PB3;
-		LD4 = ~PB4;
-		LD5 = ~PB5;
-		LD6 = ~PB6;
-		LD7 = ~PB7;
-
-		if ((~MPB) || (~PB8))  // What does this do.....Note that MPB is the P3.7 push button on the 8051 board
-			LD8 = 1;
-		else 
-			LD8 = 0;
+	{	PB_to_select_Tone();
 	}
 }
 

@@ -26,7 +26,7 @@
 
 void set_Tone(unsigned short);
 unsigned short octave_Adjust(unsigned char, unsigned short);
-void CheckInput();
+void PB_to_select_Tone();
 void UpdateDispaly();
 
 
@@ -49,73 +49,92 @@ void UpdateDispaly();
 //	//We're done here, proceed to update the display and return to the MainLoop.
 //    char tone_select = 0;
 //    char i;
-//    if (~P1 & 0)
-//	{
-//		for(i = 1; i<8; i++)
-//		{
-//            switch(i){    /* Switch between tones */
-//                case 1: /* C */
-//                    tone_select = 0;
-//                    if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
-//                        tone_select = 1; /* C# */
-//                        }
-//                break;
+void PB_to_select_Tone(void){
+	char tone_select = 0;
+	char i;
+	if(~P1){
+		for(i = 1; i<8; i++){
+			switch(i){	/* Switch between tones */
+				case 1: /* C */
+					if(~PB2){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 0;
+						if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
+							tone_select = 1; /* C# */
+							}
+						}
+				break;
 
-//                
-//                case 2: /* D */
-//                    tone_select = 2;
-//                    if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
-//                        tone_select = 3; /* C# */
-//                        }
-//                break;
+			
+				case 2: /* D */
+					if(~PB3){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 2;
+						if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
+							tone_select = 3; /* C# */
+							}
+						}
+				break;
 
-//                
-//                case 3: /* E (note:- E# is F so no need to check PB1) */
-//                    tone_select = 4;
-//                break;
+			
+				case 3: /* E (note:- E# is F so no need to check PB1) */
+					if(~PB4){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 4;
+						}
+				break;
 
-//                case 4: /* F */
-//                    tone_select = 5;
-//                    if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
-//                        tone_select = 6; /* F# */
-//                        }
-//                break;
+				case 4: /* F */
+					if(~PB5){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 5;
+						if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
+							tone_select = 6; /* F# */
+							}
+						}
+				break;
 
-//                case 5: /* G */
-//                    tone_select = 7;
-//                    if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
-//                        tone_select = 8; /* G# */
-//                        }
-//                break;
+				case 5: /* G */
+					if(~PB6){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 7;
+						if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
+							tone_select = 8; /* G# */
+							}
+						}
+				break;
 
-//                case 6: /* A */
-//                    tone_select = 9;
-//                    if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
-//                        tone_select = 10; /* A# */
-//                        }
-//                break;
+				case 6: /* A */
+					if(~PB7){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 9;
+						if(~PB1){ /* if PB1 is pushed, we'll adjust the tone to a sharp  */
+							tone_select = 10; /* A# */
+							}
+						}
+				break;
 
-//                case 7: /* B (note:- B# is C so no need to check PB1)  */
-//                    tone_select = 11;
-//                break;
+				case 7: /* B (note:- B# is C so no need to check PB1)  */
+					if(~PB8){
+						TR2 = 1; /* Turn on Timer2 */
+						tone_select = 11;
+						}
+				break;
 
 
 
-//                default:
-//                break;
-//            }
-//            //set_Tone(octave_Adjust(octave,tone_select)); /* Set tone as directed by push buttons */
-//            TR2 = 1; /* Turn on Timer2 */
-//    }
-//         
-//	}
-//	else
-//		{
-//			TR2 = 0; /* Turn off Timer2 */
-//    }
-//    
-//	UpdateDispaly();
-//}
+				default:
+				break;
+			}
+		}
+
+		set_Tone(octave_Adjust(octave,tone_select)); /* Set tone as directed by push buttons */
+	} else {
+		//TR2 = 0; /* Turn off Timer2 */
+		Dtheta = 0;
+	}
+	
+}
 
 
 void UpdateDispaly()

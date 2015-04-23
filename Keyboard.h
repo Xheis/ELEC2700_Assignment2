@@ -5,17 +5,17 @@
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
----------			This is our Keyboard.header						---------
----------															---------
----------			We will store functions related					---------
----------			to taking user input and playing/holding		---------
----------			notes. This will rely on calling upon			---------
----------			the Notes.header for functions/methods			---------
----------			related to generating and playing specific		---------
----------			frequency notes.								---------
----------															---------
----------															---------
----------															---------
+---------			This is our Keyboard.header														---------
+---------																														---------
+---------			We will store functions related												---------
+---------			to taking user input and playing/holding							---------
+---------			notes. This will rely on calling upon									---------
+---------			the Notes.header for functions/methods								---------
+---------			related to generating and playing specific						---------
+---------			frequency notes.																			---------
+---------																														---------
+---------																														---------
+---------																														---------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -27,10 +27,10 @@
 void set_Tone(unsigned short);
 unsigned short octave_Adjust(unsigned char, unsigned short);
 void PB_to_select_Tone();
-void UpdateDispaly();
+void UpdateDisplay();
 
 
-//void CheckInput(void)
+//void PB_to_select_Tone(void)
 //{	
 //	//We want to loop this in our main loop, and check our inputs. Ideally, we're going to be reading the P1 input byte for 
 //	//changes in value, at which point we can grab the corresponding value. 
@@ -137,7 +137,7 @@ void PB_to_select_Tone(void){
 }
 
 
-void UpdateDispaly()
+void UpdateDisplay()
 {
 	//I feel this is a good opportunity to use the LEDs and LCD to display whatever information we feel necessary. As such, I've left this method open
 	//to whatever you feel we need to use. It can be called inside Check Input

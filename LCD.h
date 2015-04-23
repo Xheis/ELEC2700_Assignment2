@@ -48,17 +48,18 @@ void initLCD(void){
 void clearLCD(void){
 }
 
-void appendWriteLCD(char *word){
-	len = sizeof(word);
-	for(char i; i < len; i++){
-		//// something
-	}
-}void appendWriteLCD(char *word){
+void printLCD(char *word){
 	len = sizeof(word);
 	for(char i; i < len; i++){
 		//// something
 	}
 }
+
+
+void setCursor(char x, char y){
+	////// Something
+}
+
 
 
 	

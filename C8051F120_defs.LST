@@ -1,10 +1,9 @@
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 1   
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE C8051F120_DEFS
 OBJECT MODULE PLACED IN C8051F120_defs.OBJ
-COMPILER INVOKED BY: C:\programming\Keil_v5\C51\BIN\C51.EXE C8051F120_defs.h OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
-                    - TABS(2)
+COMPILER INVOKED BY: C:\programming\Keil_v5\C51\BIN\C51.EXE C8051F120_defs.h OMF2 OPTIMIZE(8,SPEED) BROWSE DEBUG TABS(2)
 
 line level    source
 
@@ -62,9 +61,9 @@ line level    source
 *** ERROR C141 IN LINE 44 OF C8051F120_defs.h: syntax error near '0x87'
   45          SFR (TCON, 0x88);                      // Timer/Counter Control
 *** ERROR C141 IN LINE 45 OF C8051F120_defs.h: syntax error near '0x88'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 2   
-
   46          SFR (CPT0CN, 0x88);                    // Comparator1 Control
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 2   
+
 *** ERROR C141 IN LINE 46 OF C8051F120_defs.h: syntax error near '0x88'
   47          SFR (CPT1CN, 0x88);                    // Comparator0 Control
 *** ERROR C141 IN LINE 47 OF C8051F120_defs.h: syntax error near '0x88'
@@ -126,9 +125,9 @@ line level    source
 *** ERROR C141 IN LINE 75 OF C8051F120_defs.h: syntax error near '0x97'
   76          SFR (SCON0, 0x98);                     // UART0 Control
 *** ERROR C141 IN LINE 76 OF C8051F120_defs.h: syntax error near '0x98'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 3   
-
   77          SFR (SCON, 0x98);                      // UART0 Control
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 3   
+
 *** ERROR C141 IN LINE 77 OF C8051F120_defs.h: syntax error near '0x98'
   78          SFR (SCON1, 0x98);                     // UART1 Control
 *** ERROR C141 IN LINE 78 OF C8051F120_defs.h: syntax error near '0x98'
@@ -190,9 +189,9 @@ line level    source
 *** ERROR C141 IN LINE 106 OF C8051F120_defs.h: syntax error near '0xB7'
  107          SFR (FLACL, 0xB7);                     // Flash access limit
 *** ERROR C141 IN LINE 107 OF C8051F120_defs.h: syntax error near '0xB7'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 4   
-
  108          SFR (IP, 0xB8);                        // Interrupt Priority
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 4   
+
 *** ERROR C141 IN LINE 108 OF C8051F120_defs.h: syntax error near '0xB8'
  109          SFR (SADEN0, 0xB9);                    // UART0 Slave address mask
 *** ERROR C141 IN LINE 109 OF C8051F120_defs.h: syntax error near '0xB9'
@@ -254,9 +253,9 @@ line level    source
 *** ERROR C141 IN LINE 137 OF C8051F120_defs.h: syntax error near '0xC9'
  138          SFR (TMR3CF, 0xC9);                    // Timer/Counter 3 Configuration
 *** ERROR C141 IN LINE 138 OF C8051F120_defs.h: syntax error near '0xC9'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 5   
-
  139          SFR (TMR4CF, 0xC9);                    // Timer/Counter 4 Configuration
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 5   
+
 *** ERROR C141 IN LINE 139 OF C8051F120_defs.h: syntax error near '0xC9'
  140          SFR (RCAP2L, 0xCA);                    // Timer/Counter 2 Reload Low
 *** ERROR C141 IN LINE 140 OF C8051F120_defs.h: syntax error near '0xCA'
@@ -318,9 +317,9 @@ line level    source
 *** ERROR C141 IN LINE 168 OF C8051F120_defs.h: syntax error near '0xDC'
  169          SFR (PCA0CPM3, 0xDD);                  // PCA0 Module 3 Mode Register
 *** ERROR C141 IN LINE 169 OF C8051F120_defs.h: syntax error near '0xDD'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 6   
-
  170          SFR (PCA0CPM4, 0xDE);                  // PCA0 Module 4 Mode Register
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 6   
+
 *** ERROR C141 IN LINE 170 OF C8051F120_defs.h: syntax error near '0xDE'
  171          SFR (PCA0CPM5, 0xDF);                  // PCA0 Module 5 Mode Register
 *** ERROR C141 IN LINE 171 OF C8051F120_defs.h: syntax error near '0xDF'
@@ -382,9 +381,9 @@ line level    source
 *** ERROR C141 IN LINE 199 OF C8051F120_defs.h: syntax error near '0xFD'
  200          SFR (PCA0CPH1, 0xFE);                  // PCA0 Capture 1 High
 *** ERROR C141 IN LINE 200 OF C8051F120_defs.h: syntax error near '0xFE'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 7   
-
  201          SFR (WDTCN, 0xFF);                     // Watchdog Timer Control
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 7   
+
 *** ERROR C141 IN LINE 201 OF C8051F120_defs.h: syntax error near '0xFF'
  202          
  203          //-----------------------------------------------------------------------------
@@ -446,9 +445,9 @@ line level    source
  235          
  236          #define SFR_P0       0x80
  237          #define SFR_TCON     0x88
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 8   
-
  238          #define SFR_CPT0CN   0x88
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 8   
+
  239          #define SFR_CPT1CN   0x88
  240          #define SFR_FLSTAT   0x88
  241          #define SFR_P1       0x90
@@ -510,9 +509,9 @@ line level    source
  285          SBIT (CP0HYP1, SFR_CPT0CN, 3);         // Comparator 0 Positive Hysteresis 1
 *** ERROR C141 IN LINE 285 OF C8051F120_defs.h: syntax error near '0x88'
  286          SBIT (CP0HYP0, SFR_CPT0CN, 2);         // Comparator 0 Positive Hysteresis 0
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 9   
-
 *** ERROR C141 IN LINE 286 OF C8051F120_defs.h: syntax error near '0x88'
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 9   
+
  287          SBIT (CP0HYN1, SFR_CPT0CN, 1);         // Comparator 0 Negative Hysteresis 1
 *** ERROR C141 IN LINE 287 OF C8051F120_defs.h: syntax error near '0x88'
  288          SBIT (CP0HYN0, SFR_CPT0CN, 0);         // Comparator 0 Negative Hysteresis 0
@@ -574,9 +573,9 @@ line level    source
  320                                                 // Bit6 UNUSED
  321          SBIT (MCE1, SFR_SCON1, 5);             // UART1 MCE
 *** ERROR C141 IN LINE 321 OF C8051F120_defs.h: syntax error near '0x98'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 10  
-
  322          SBIT (REN1, SFR_SCON1, 4);             // UART1 RX Enable
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 10  
+
 *** ERROR C141 IN LINE 322 OF C8051F120_defs.h: syntax error near '0x98'
  323          SBIT (TB81, SFR_SCON1, 3);             // UART1 TX Bit 8
 *** ERROR C141 IN LINE 323 OF C8051F120_defs.h: syntax error near '0x98'
@@ -638,9 +637,9 @@ line level    source
 *** ERROR C141 IN LINE 356 OF C8051F120_defs.h: syntax error near '0xC0'
  357          SBIT (SMBFTE, SFR_SMB0CN, 1);          // SMBus0 Bus free timeout enable
 *** ERROR C141 IN LINE 357 OF C8051F120_defs.h: syntax error near '0xC0'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 11  
-
  358          SBIT (SMBTOE, SFR_SMB0CN, 0);          // SMBus0 SCL low timeout enable
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 11  
+
 *** ERROR C141 IN LINE 358 OF C8051F120_defs.h: syntax error near '0xC0'
  359          
  360          // TMR2CN 0xC8
@@ -702,9 +701,9 @@ line level    source
 *** ERROR C141 IN LINE 394 OF C8051F120_defs.h: syntax error near '0xD0'
  395          SBIT (RS0, SFR_PSW, 3);                // Register Bank Select 0
 *** ERROR C141 IN LINE 395 OF C8051F120_defs.h: syntax error near '0xD0'
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 12  
-
  396          SBIT (OV, SFR_PSW, 2);                 // Overflow Flag
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 12  
+
 *** ERROR C141 IN LINE 396 OF C8051F120_defs.h: syntax error near '0xD0'
  397          SBIT (F1, SFR_PSW, 1);                 // User Flag 1
 *** ERROR C141 IN LINE 397 OF C8051F120_defs.h: syntax error near '0xD0'
@@ -766,9 +765,9 @@ line level    source
 *** ERROR C141 IN LINE 428 OF C8051F120_defs.h: syntax error near '0xE8'
  429          
  430          // SPI0CN 0xF8
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 13  
-
  431          SBIT (SPIF, SFR_SPI0CN, 7);            // SPI0 Interrupt Flag
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 13  
+
 *** ERROR C141 IN LINE 431 OF C8051F120_defs.h: syntax error near '0xF8'
  432          SBIT (WCOL, SFR_SPI0CN, 6);            // SPI0 Write Collision Flag
 *** ERROR C141 IN LINE 432 OF C8051F120_defs.h: syntax error near '0xF8'
@@ -830,9 +829,9 @@ line level    source
  482          #define  SMB0_PAGE         0x00        // SMBUS0
  483          #define  TMR2_PAGE         0x00        // TIMER2
  484          #define  TMR3_PAGE         0x01        // TIMER3
-C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/20/2015 13:37:53 PAGE 14  
-
  485          #define  TMR4_PAGE         0x02        // TIMER4
+C51 COMPILER V9.53.0.0   C8051F120_DEFS                                                    04/22/2015 14:19:00 PAGE 14  
+
  486          #define  DAC0_PAGE         0x00        // DAC0
  487          #define  DAC1_PAGE         0x01        // DAC1
  488          #define  PCA0_PAGE         0x00        // PCA0

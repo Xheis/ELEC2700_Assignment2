@@ -39,7 +39,7 @@ void UpdateDisplay();
 //	//		P1.2	P1.3	P1.4	P1.5	P1.6	P1.7	P1.8
 //	
 //	//When the first button is pressed (P1.1), the sharp keys will be engagued.
-//	//		C# 		D(Eb)	E		F#		G#		A#(Bb)	B
+//	//		C# 		D#(Eb)	E		F#		G#		A#(Bb)	B
 //	//		P1.2	P1.3	P1.4	P1.5	P1.6	P1.7	P1.8
 //	// with E & B not having Sharps
 //	

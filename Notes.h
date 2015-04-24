@@ -54,6 +54,14 @@ const char    code    sin[] = {
                                     
                                     #include "sine_8_bits.csv"    /* 256 piece sine wave */
                                 };
+
+const unsigned char	code delay_HB[] = {
+																		#include "delay_HB.csv"
+};
+
+const unsigned char	code delay_LB[] = {
+																		#include "delay_LB.csv"
+};
 								
 volatile unsigned short Dtheta;		//Our Dtheta variable does...
 
@@ -108,10 +116,24 @@ void Oscillator_Init()
 --------------------------------------------------------------------------------------------------------------------*/
 void Timer_Init()
 {
-    SFRPAGE   = TMR2_PAGE;
+		SFRPAGE   = TIMER01_PAGE; /* Initialize Timer1 */
+    TCON      = 0x40;
+    TMOD      = 0x20;
+    CKCON     = 0x02;					/* Auto Reload Timer		 */
+    TL1       = delay_LB[0];
+    TH1       = delay_HB[0];
+		
+		TCON      = 0x40;
+    TMOD      = 0x20;
+    CKCON     = 0x02;
+    TL1       = 0x45;
+    TH1       = 0x45;
+	
+	
+    SFRPAGE   = TMR2_PAGE; 	/* Initialize Timer1 */
     TMR2CN    = 0x04;
     TMR2CF    = 0x0A;
-    RCAP2L    = 0x45;
+    RCAP2L    = 0x45;				/* Set recap value for a 65536Hz timer */
     RCAP2H    = 0xFF;
 }
 
@@ -221,6 +243,23 @@ void set_Tone(unsigned short i)
 {
     Dtheta = i;
 }
+
+void delay(unsigned char delay_len){ /* a millisecond delay - caution CPU can do nothing else while running this delay*/
+	if(delay_len==0){	/* Just to double check that we havent called a delay which doesnt exsist */
+		delay_len++;
+	}
+	delay_len--;	/* Decrement delay_len so it points to the correct array pointer to value */
+	if(delay_len>254){/* there are only 255 elements to array goes from  0 - to 254 */
+		delay_len = 254;
+	}
+	TL1 = delay_LB[delay_len];	/* Set lowbyte 										*/
+  TH1 = delay_HB[delay_len];	/* Set highbyte 									*/
+	TF = 0;											/* Clear Timer1 Flag 							*/
+	TR1 = 1; 										/* Turn on Timer1 								*/
+	while(~TF1);								/* wait till timer flag is set 		*/
+	TR1 = 0; 										/* Turn off Timer1 								*/
+}
+		
 
 
 

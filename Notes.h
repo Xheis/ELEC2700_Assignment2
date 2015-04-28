@@ -32,9 +32,10 @@
 
 /*    Definitions    */
 #define  	WAVE_RESOLUTION    256   	// Our 256bit sine wave resolution
-#define    	MAX_VOLUME        16    	// 16 different volumes
+#define   MAX_VOLUME        16    	// 16 different volumes
 #define 	SINE_OFFSET     128 		// DC offset for sin wave
 #define 	DEFAULT_OCTAVE	4
+#define 	MAX_NUM_NOTES		7
 
 
 /*    Global Variables        */
@@ -204,6 +205,21 @@ void DAC_Sine_Wave(void){
     theta = theta + Dtheta;    /* Due to sine wave being 8 bit, the char overflow will bring state back to 0 */
 }
 
+void	theta_Manager(void){
+	unsigned char i; 
+	unsigned char num_buttons_pushed = 0, 
+	unsigned char alteredPort;
+	alteredPort = P1&0xFE; /* disregard pushbutton 1 */
+	for(i = 0; i<8; i++){
+		num_buttons_pushed += ((alteredPort>>1)+1)%2; /* Move value to the right then increment by one then take the modulo */
+		/* This will increment num_buttons_pushed*/
+		/* Push buttons are 0 if active.  */
+	}
+	
+	
+	
+	
+}
 
 /*		Set_Volume				*/
 	

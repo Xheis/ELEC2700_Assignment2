@@ -211,7 +211,26 @@ void	theta_Manager(void){
 	unsigned char alteredPort;
 	alteredPort = P1&0xFE; /* disregard pushbutton 1 */
 	for(i = 0; i<8; i++){
-		num_buttons_pushed += ((alteredPort>>1)+1)%2; /* Move value to the right then increment by one then take the modulo */
+		num_buttons_pushed += ((alteredPort>>i)+1)%2; /* Move value to the right then increment by one then take the modulo */
+		/* This will increment num_buttons_pushed*/
+		/* Push buttons are 0 if active.  */
+	}
+	
+	
+	
+	
+}
+
+
+void	theta_Manager(void){
+	unsigned char i; 
+	unsigned char num_buttons_pushed = 0, 
+	unsigned char alteredPort;
+	unsigned short notes[12]={0};
+	
+	alteredPort = P1&0xFE; /* disregard pushbutton 1 */
+	for(i = 0; i<8; i++){
+		num_buttons_pushed += ((alteredPort>>i)+1)%2; /* Move value to the right then increment by one then take the modulo */
 		/* This will increment num_buttons_pushed*/
 		/* Push buttons are 0 if active.  */
 	}
